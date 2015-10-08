@@ -60,3 +60,7 @@ public class Elevator {
 	}
 	/////////////////////////
 }
+
+public class Request {
+	
+}

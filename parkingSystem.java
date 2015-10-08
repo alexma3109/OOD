@@ -1,11 +1,11 @@
-public abstract class Vehicycle {
+public abstract class Vehicle {
 	protected int size;
 	protected int type;
 	protected Spot spot;
 	protected String liscense;
 	protected boolean isParked;
 	
-	public Vehicycle();
+	public Vehicle();
 	public int getSize(){
 		return size;
 	}
@@ -29,19 +29,19 @@ public abstract class Vehicycle {
 	}
 }
 
-public class Motorcycle extends Vehicycle{
+public class Motorcycle extends Vehicle{
 	public Motorcycle(){
 		type = 0;
 		size = 1;
 	}	
 }
-public class Car extends Vehicycle{
+public class Car extends Vehicle{
 	public Car(){
 		type = 1;
 		size = 1;
 	}
 }
-public class Truck extends Vehicycle{
+public class Truck extends Vehicle{
 	public Truck() {
 		type = 2;
 		size = 2;
@@ -51,7 +51,7 @@ public class Truck extends Vehicycle{
 public class Spot {
 	private int[] pos;
 	private int size;
-	private Vehicycle vehicycle;
+	private Vehicle vehicle;
 	private boolean occupied;
 	private boolean created;
 	
@@ -87,22 +87,22 @@ public class Spot {
 		}
 	}
 	
-	public boolean setVehicycle(Vehicycle v){
+	public boolean setVehicle(Vehicle v){
 		if(!occupied && size >= v.size){
-			vehicycle = v;
+			vehicle = v;
 			occupied = true;
 			return true;
 		}
 		return false;
 	}
 	
-	public Vehicycle getVehicycle(){
-		return vehicycle;
+	public Vehicle getVehicle(){
+		return vehicle;
 	}
 	
-	public Vehicycle removeVehicycle(){
-		Vehicycle temp = vehicycle;
-		vehicycle = null;
+	public Vehicle removeVehicle(){
+		Vehicle temp = vehicle;
+		vehicle = null;
 		occupied = false;
 		return temp;
 	}
@@ -133,9 +133,12 @@ public class Garage{
 		}
 		return true;
 	}
-	public boolean isSpotAvailable(int row, int col, Vehicycle vehicycle){
-		if(!spots[row][col].occupied || spots[row][col].size >= vehicycle.size){
+	public boolean isSpotAvailable(int row, int col, Vehicle vehicle){
+		if(!spots[row][col].occupied && spots[row][col].size >= vehicle.size){
 			return true;
+		}
+		else{
+			return false;
 		}
 	}
 	public Spot[][] getSpots(){

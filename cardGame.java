@@ -56,13 +56,13 @@ public class hand<T extends Card>{
 		}
 		return score;
 	}
-	public void addScore(T card){
+	public void addCard(T card){
 		cards.add(card);
 	}
 }
 
 public class blackJackCard extends Card {
-	public blackJackCard (c, s) {
+	public blackJackCard (int c, Suit s) {
 		super(c, s);
 	}
 	public int value(){
@@ -73,7 +73,7 @@ public class blackJackCard extends Card {
 			return 11;
 		}
 		else{
-			return super.value();
+			return faceValue;
 		}
 	}
 	public int minValue(){
@@ -97,7 +97,7 @@ public class blackJackCard extends Card {
 	}
 }
 
-public blackJackCardHand extends Hand<blackJackCard>{
+public class blackJackCardHand extends Hand<blackJackCard>{
 	public int score(){
 		ArrayList<Integer> scores = getScores();
 		int minOver = Integer.MAX_VALUE;
@@ -115,17 +115,17 @@ public blackJackCardHand extends Hand<blackJackCard>{
 	private ArrayList<Integer> getScores(ArrayList<blackJackCard> cards){
 		ArrayList<Integer> res = new ArrayList<Integer>();
 		int countAce = 0;
-		int maxSum = 0;
+		int sum = 0;
 		for(blackJackCard card : cards){
 			if(card.isAce()){
 				countAce++;
 			}
-			minSum += blackJackCard.value();
+			sum += blackJackCard.value();
 		}
-		res.add(minSum);
+		res.add(sum);
 		while(countAce > 0){
-			minSum = minSum - 10;
-			res.add(minSum);
+			sum = sum - 10;
+			res.add(sum);
 		}
 		return res;
 	}
