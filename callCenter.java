@@ -91,17 +91,17 @@ public abstract class Employee {
 	}
 }
 
-public class Responder extends Eployee {
+public class Responder extends Employee {
 	public Responder(){
 		rank = 0;
 	}
 }
-public class Manager extends Eployee {
+public class Manager extends Employee {
 	public Manager(){
 		rank = 1;
 	}
 }
-public class Director extends Eployee {
+public class Director extends Employee {
 	public Director(){
 		rank = 2;
 	}
