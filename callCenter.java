@@ -35,7 +35,15 @@ public class callHandler {
 		}
 		else{
 			waitQueue.add(call);
+			return null;
 		}
+	}
+
+	public Queue<Call> getWaitingList(){
+		if(waitQueue.size() != 0){
+			return waitQueue;
+		}
+		return null;
 	}
 	
 	private callHandler{
