@@ -53,7 +53,7 @@ public class callHandler {
 		
 	////constructor/////	
 	}
-	public static getInstance(){
+	public static callHandler getInstance(){
 		if(instance == null){
 			instance = new callHandler();
 		}
